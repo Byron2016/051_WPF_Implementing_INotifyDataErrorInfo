@@ -36,3 +36,4 @@
 				
 			- Desplegar mensaje de error. Existen dos formas
 				- 1ra. Solo la mostraremos no la usaremos
+				- 2da. Poniendo el mensaje dentro del textBox pero el problema es que cambia el tamaño del textBox.

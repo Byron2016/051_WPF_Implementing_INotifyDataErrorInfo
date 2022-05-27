@@ -22,7 +22,7 @@
                     <Setter.Value>
                         <ControlTemplate>
                             <Grid>
-                                
+                                <AdornedElementPlaceholder />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -37,6 +37,13 @@
                                         CornerRadius="3">
                                     <ScrollViewer x:Name="PART_ContentHost" />
                                 </Border>
+                                <ItemsControl  Margin="0 5 0 0" FontSize="12" ItemsSource="{TemplateBinding Validation.Errors}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="Red" Text="{Binding ErrorContent}" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </StackPanel>
                         </ControlTemplate>
                     </Setter.Value>
