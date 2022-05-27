@@ -68,6 +68,7 @@ namespace aah_ValidationMVVM.ViewModels
             {
                 _price = value;
 
+                ClearErrors(nameof(Price));
                 if(_price > 50)
                 {
                     AddError(nameof(Price), "Invalid price. The max product price is 50 dolars");
@@ -100,6 +101,16 @@ namespace aah_ValidationMVVM.ViewModels
 
             _propertyErrors[propertyName].Add(errorMessage);
             OnErrorChanged(propertyName);
+        }
+
+        public void ClearErrors(string propertyName)
+        {
+            // remover el propertyName key del diccionario.
+            if (_propertyErrors.Remove(propertyName))
+            {
+                OnErrorChanged(propertyName);
+            }
+            
         }
 
         private void OnErrorChanged(string propertyName)
