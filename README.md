@@ -21,4 +21,4 @@
 		- Crear en MainViewModel prop de tipo CreateProductViewModel e inicializarla en constructor.
 		- Crear Commands/CreateProductCommand que implementa ICommand
 		- Definir propiedad CreateProductCommand en CreateProductViewModel inicializarlo en el constructor
-		
+		- Llamar al userControl CreateProductView en el MainView
