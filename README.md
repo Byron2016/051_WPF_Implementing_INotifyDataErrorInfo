@@ -16,3 +16,6 @@
 					- Eliminamos del App.xaml el StartupUri
 					- Creamos un método protegido OnStartup el cual inicializa la ventana en el constructor el DataContext
 					- Muestra la ventana inicializada.
+		- Crear clase ViewModels/CreateProductViewModel que implementa INotifyPropertyChanged
+			- Definir las propiedades que tendra la vista (campos)
+		
