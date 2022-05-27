@@ -22,3 +22,7 @@
 		- Crear Commands/CreateProductCommand que implementa ICommand
 		- Definir propiedad CreateProductCommand en CreateProductViewModel inicializarlo en el constructor
 		- Llamar al userControl CreateProductView en el MainView
+		
+		- Implementar control de errores.
+			- En CreateProductViewModel hacer que implemente INotifyDataErrorInfo
+			

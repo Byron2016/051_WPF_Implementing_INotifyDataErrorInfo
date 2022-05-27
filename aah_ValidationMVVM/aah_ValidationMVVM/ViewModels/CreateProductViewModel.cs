@@ -1,14 +1,12 @@
 ﻿using aah_ValidationMVVM.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace aah_ValidationMVVM.ViewModels
 {
-    public  class CreateProductViewModel : ViewModelBase
+    public  class CreateProductViewModel : ViewModelBase, INotifyDataErrorInfo
     {
         private int _id;
         public int Id
@@ -53,6 +51,9 @@ namespace aah_ValidationMVVM.ViewModels
         }
 
         private double _price;
+
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged; //Generado INotifyDataErrorInfo
+
         public double Price
         {
             get
@@ -68,9 +69,16 @@ namespace aah_ValidationMVVM.ViewModels
 
         public ICommand CreateProductCommand { get; }
 
+        public bool HasErrors => throw new NotImplementedException(); //Generado INotifyDataErrorInfo
+
         public CreateProductViewModel()
         {
             CreateProductCommand = new CreateProductCommand(this);
+        }
+
+        public IEnumerable GetErrors(string? propertyName) //Generado INotifyDataErrorInfo
+        {
+            throw new NotImplementedException();
         }
     }
 }
