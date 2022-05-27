@@ -10,7 +10,7 @@ namespace aah_ValidationMVVM.ViewModels
 {
     public  class CreateProductViewModel : ViewModelBase, INotifyDataErrorInfo
     {
-        private readonly Dictionary<string, List<string>> _propertyErrors = new Dictionary<string, List<string>>();
+        private readonly ErrorsViewModel _errorsViewModel;
 
         private int _id;
         public int Id
@@ -68,10 +68,10 @@ namespace aah_ValidationMVVM.ViewModels
             {
                 _price = value;
 
-                ClearErrors(nameof(Price));
+                _errorsViewModel.ClearErrors(nameof(Price));
                 if(_price > 50)
                 {
-                    AddError(nameof(Price), "Invalid price. The max product price is 50 dolars");
+                    _errorsViewModel.AddError(nameof(Price), "Invalid price. The max product price is 50 dolars");
                 }
 
                 OnPropertyChanged(nameof(Price));
@@ -82,42 +82,25 @@ namespace aah_ValidationMVVM.ViewModels
 
         public ICommand CreateProductCommand { get; }
 
-        public bool HasErrors => _propertyErrors.Any();  //Generado INotifyDataErrorInfo
+        public bool HasErrors => _errorsViewModel.HasErrors;
 
         public CreateProductViewModel()
         {
             CreateProductCommand = new CreateProductCommand(this);
+
+            _errorsViewModel = new ErrorsViewModel();
+            //Para poder levantar el ErrorsChanged event. Nos suscrivimos 
+            _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
         }
 
         public IEnumerable GetErrors(string? propertyName) //Generado INotifyDataErrorInfo
         {
-            return _propertyErrors.GetValueOrDefault(propertyName, null);
+            return _errorsViewModel.GetErrors(propertyName);
         }
 
-        public void AddError(string propertyName, string errorMessage)
+        private void ErrorsViewModel_ErrorsChanged(object sender, DataErrorsChangedEventArgs e)
         {
-            if (!_propertyErrors.ContainsKey(propertyName))
-            {
-                _propertyErrors.Add(propertyName, new List<string>());
-            }
-
-            _propertyErrors[propertyName].Add(errorMessage);
-            OnErrorChanged(propertyName);
-        }
-
-        public void ClearErrors(string propertyName)
-        {
-            // remover el propertyName key del diccionario.
-            if (_propertyErrors.Remove(propertyName))
-            {
-                OnErrorChanged(propertyName);
-            }
-            
-        }
-
-        private void OnErrorChanged(string propertyName)
-        {
-            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+            ErrorsChanged?.Invoke(this, e);
             OnPropertyChanged(nameof(CanCreate));
         }
     }
