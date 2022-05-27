@@ -78,6 +78,8 @@ namespace aah_ValidationMVVM.ViewModels
             }
         }
 
+        public bool CanCreate => !HasErrors; //solo permite crear si no hay errores.
+
         public ICommand CreateProductCommand { get; }
 
         public bool HasErrors => _propertyErrors.Any();  //Generado INotifyDataErrorInfo
@@ -116,6 +118,7 @@ namespace aah_ValidationMVVM.ViewModels
         private void OnErrorChanged(string propertyName)
         {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+            OnPropertyChanged(nameof(CanCreate));
         }
     }
 }

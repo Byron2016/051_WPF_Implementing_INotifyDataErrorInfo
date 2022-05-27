@@ -118,7 +118,8 @@
         <Button Grid.Row="5" Margin="0 25 0 0" Padding="10 5"
                 HorizontalAlignment="Left"
                 Command="{Binding CreateProductCommand}"
-                Content="Create">
+                Content="Create"
+                IsEnabled="{Binding CanCreate}">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#32a852"/>
