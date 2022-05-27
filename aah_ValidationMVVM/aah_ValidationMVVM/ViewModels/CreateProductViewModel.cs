@@ -1,13 +1,17 @@
 ﻿using aah_ValidationMVVM.Commands;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace aah_ValidationMVVM.ViewModels
 {
     public  class CreateProductViewModel : ViewModelBase, INotifyDataErrorInfo
     {
+        private readonly Dictionary<string, List<string>> _propertyErrors = new Dictionary<string, List<string>>();
+
         private int _id;
         public int Id
         {
@@ -63,13 +67,19 @@ namespace aah_ValidationMVVM.ViewModels
             set
             {
                 _price = value;
+
+                if(_price > 50)
+                {
+                    AddError(nameof(Price), "Invalid price. The max product price is 50 dolars");
+                }
+
                 OnPropertyChanged(nameof(Price));
             }
         }
 
         public ICommand CreateProductCommand { get; }
 
-        public bool HasErrors => throw new NotImplementedException(); //Generado INotifyDataErrorInfo
+        public bool HasErrors => _propertyErrors.Any();  //Generado INotifyDataErrorInfo
 
         public CreateProductViewModel()
         {
@@ -78,7 +88,23 @@ namespace aah_ValidationMVVM.ViewModels
 
         public IEnumerable GetErrors(string? propertyName) //Generado INotifyDataErrorInfo
         {
-            throw new NotImplementedException();
+            return _propertyErrors.GetValueOrDefault(propertyName, null);
+        }
+
+        public void AddError(string propertyName, string errorMessage)
+        {
+            if (!_propertyErrors.ContainsKey(propertyName))
+            {
+                _propertyErrors.Add(propertyName, new List<string>());
+            }
+
+            _propertyErrors[propertyName].Add(errorMessage);
+            OnErrorChanged(propertyName);
+        }
+
+        private void OnErrorChanged(string propertyName)
+        {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
     }
 }

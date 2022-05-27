@@ -25,4 +25,11 @@
 		
 		- Implementar control de errores.
 			- En CreateProductViewModel hacer que implemente INotifyDataErrorInfo
-			
+			- Definir una propiedad Diccionario que guardará los errores.
+			- Implementar método GetErrors retorne la lista de errores.
+			- Implementar método HasErrors chequeando si existe alguno
+			- Crear método AddError que guardará los errores en el diccionario.
+				- Chequeamos si ya existe un errorKey en el diccionario.
+				- Agregamos el mensaje de error al errorKey.
+			- Crear una validación.
+				- Al probar se verifica que no se despliega el mensaje de error, para eso hay que hacer cambios en el textBox.
