@@ -1,8 +1,7 @@
 ﻿<Application x:Class="aah_ValidationMVVM.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:aah_ValidationMVVM"
-             StartupUri="Views/MainView.xaml">
+             xmlns:local="clr-namespace:aah_ValidationMVVM">
     <Application.Resources>
          
     </Application.Resources>

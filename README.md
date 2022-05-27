@@ -8,4 +8,11 @@
 		- Crear un nuevo proyecto	
 		- Cambiar nombre de MainWindow y moverla a carpeta Views
 		- Crear clase  ViewModels/ViewModelBase que implementa INotifyPropertyChanged
-		
+		- Crear DataContext en 
+			- Existen dos alternativas, 
+				- la primera como lo hicimos en 045_WPF_HandlingRoutedEvents_MVVMCommands
+					- En el MainView.xaml.cs colocar DataContext = new MainViewModel();
+				- La segunda es trabajando sobre el App.xaml.cs
+					- Eliminamos del App.xaml el StartupUri
+					- Creamos un método protegido OnStartup el cual inicializa la ventana en el constructor el DataContext
+					- Muestra la ventana inicializada.
