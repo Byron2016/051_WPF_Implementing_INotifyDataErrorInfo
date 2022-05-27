@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace aah_ValidationMVVM.ViewModels
+﻿namespace aah_ValidationMVVM.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        public CreateProductViewModel CreateProductViewModel { get; set; }
+
+        public MainViewModel()
+        {
+            CreateProductViewModel = new CreateProductViewModel();
+        }
     }
 }

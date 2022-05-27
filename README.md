@@ -18,4 +18,5 @@
 					- Muestra la ventana inicializada.
 		- Crear clase ViewModels/CreateProductViewModel que implementa INotifyPropertyChanged
 			- Definir las propiedades que tendra la vista (campos)
+		- Crear en MainViewModel prop de tipo CreateProductViewModel e inicializarla en constructor.
 		
