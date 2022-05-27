@@ -1,8 +1,10 @@
-﻿using System;
+﻿using aah_ValidationMVVM.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace aah_ValidationMVVM.ViewModels
 {
@@ -62,6 +64,13 @@ namespace aah_ValidationMVVM.ViewModels
                 _price = value;
                 OnPropertyChanged(nameof(Price));
             }
+        }
+
+        public ICommand CreateProductCommand { get; }
+
+        public CreateProductViewModel()
+        {
+            CreateProductCommand = new CreateProductCommand(this);
         }
     }
 }

@@ -20,3 +20,5 @@
 			- Definir las propiedades que tendra la vista (campos)
 		- Crear en MainViewModel prop de tipo CreateProductViewModel e inicializarla en constructor.
 		- Crear Commands/CreateProductCommand que implementa ICommand
+		- Definir propiedad CreateProductCommand en CreateProductViewModel inicializarlo en el constructor
+		
