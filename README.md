@@ -33,3 +33,6 @@
 				- Agregamos el mensaje de error al errorKey.
 			- Crear una validación.
 				- Al probar se verifica que no se despliega el mensaje de error, para eso hay que hacer cambios en el textBox.
+				
+			- Desplegar mensaje de error. Existen dos formas
+				- 1ra. Solo la mostraremos no la usaremos
