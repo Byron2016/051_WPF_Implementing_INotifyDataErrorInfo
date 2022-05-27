@@ -41,3 +41,6 @@
 			- Hacer q el botón se habilite o no según exista o no errores.
 				- Definimos una variable CanCreate dentro de CreateProductViewModel que se pondrá en verdadero o falso según existan o no errores.
 				- Para hacer que la variable cambie en el método OnErrorChanged hay que agregar un OnPropertyChanged para el CanCreate.
+				
+		- Mover el control de errores a su propia clase.
+			- Crear clase ErrorsViewModel
